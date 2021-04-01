@@ -5,10 +5,11 @@ import styles from './styles';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { View } from 'native-base';
-import { FlatList, Image, StatusBar, TouchableOpacity } from 'react-native';
+import { FlatList, Image, PixelRatio, StatusBar, TouchableOpacity } from 'react-native';
 import { Props, StateProps } from './interface';
 import { getImages, setImage } from '../../store/actions'
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { HOST_URL } from '../../utils/path';
 
 const List: FC<Props> = memo(({ action, image, navigation }) => {
 
@@ -18,8 +19,8 @@ const List: FC<Props> = memo(({ action, image, navigation }) => {
       navigation.navigate('detail');
     }
     return (
-      <TouchableOpacity style={{ width: '50%', height: 180 }} onPress={viewDetail}>
-        <Image style={{ width: '100%', height: '100%' }} source={{ uri: item?.download_url }} />
+      <TouchableOpacity style={{ width: 200, height: 200 }} onPress={viewDetail}>
+        <Image style={{ width: '100%', height: '100%' }} source={{ uri: `${HOST_URL}/id/${item.id}/${PixelRatio.getPixelSizeForLayoutSize(200)}/${PixelRatio.getPixelSizeForLayoutSize(200)}` }} />
       </TouchableOpacity>
     )
   }
