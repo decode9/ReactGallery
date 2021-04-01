@@ -10,9 +10,9 @@ function* fetchService(url: string, method: string = 'GET', params: any = null) 
     data: params,
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
-    }
+    },
+    timeout: 1000,
   }
-
   const response = yield call(axios, objectRequest);
   const responseBody = response.data;
 

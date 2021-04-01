@@ -10,7 +10,7 @@ function* getImagesAsync({ payload }: any) {
         yield put(actionObject(SHOW_LOADER, true));
         const { page, data } = payload
         const path = `${list}?page=${page}&limit=50`;
- 
+      
         const result = yield call(fetchService, path);
 
         yield put(actionObject(GET_IMAGES_ASYNC, { data: data.concat(result), page: page }))
