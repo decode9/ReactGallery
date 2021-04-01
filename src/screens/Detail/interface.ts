@@ -3,5 +3,5 @@ export interface StateProps {
 }
 
 export interface Props extends StateProps {
-  action?: any
+  navigation: any
 }

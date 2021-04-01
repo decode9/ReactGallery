@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   main: {
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#131c21',
     width: '100%',
@@ -28,8 +28,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 10,
     borderWidth: 2,
-    marginVertical: 10,
-    marginBottom: 50
+    marginVertical: 30,
   },
   buttonText: {
     textAlign: 'center',

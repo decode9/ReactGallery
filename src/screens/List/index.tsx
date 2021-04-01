@@ -1,19 +1,24 @@
-import React, { memo, FC, useState } from 'react';
+/* Vista de lista */
+/* FLATLIST INFINITO, MANEJO DE IMAGENES Y FETCH EN CASO DE LLEGAR AL FINAL */
+import React, { memo, FC } from 'react';
 import styles from './styles';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Button, View } from 'native-base';
-import { FlatList, Image, StatusBar, Text, TouchableOpacity } from 'react-native';
+import { View } from 'native-base';
+import { FlatList, Image, StatusBar, TouchableOpacity } from 'react-native';
 import { Props, StateProps } from './interface';
-import { getImages } from '../../store/actions'
+import { getImages, setImage } from '../../store/actions'
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const List: FC<Props> = memo(({ action, image }) => {
+const List: FC<Props> = memo(({ action, image, navigation }) => {
 
   const Item = ({ item }: any) => {
-    console.log(item)
+    const viewDetail = () => {
+      action.setImage(item)
+      navigation.navigate('detail');
+    }
     return (
-      <TouchableOpacity style={{ width: '50%', height: 180}}>
+      <TouchableOpacity style={{ width: '50%', height: 180 }} onPress={viewDetail}>
         <Image style={{ width: '100%', height: '100%' }} source={{ uri: item?.download_url }} />
       </TouchableOpacity>
     )
@@ -39,7 +44,8 @@ const mapStateProps = ({ image }: StateProps) => ({ image });
 
 const mapDispatchToProps = (dispatch: any) => {
   const actions = {
-    getImages
+    getImages,
+    setImage
   };
 
   return {

@@ -1,3 +1,5 @@
+/* Vista principal de la aplicacion */
+/* MANEJO DEL STACK NAVIGATOR Y LOADER EN CASO DE INTERMITENCIA */
 import React, { memo, FC } from 'react';
 import styles from './styles';
 import { connect } from 'react-redux';
@@ -8,6 +10,7 @@ import { StateProps, Props } from './interface';
 import Start from '../Start';
 import { NavigationContainer } from '@react-navigation/native';
 import List from '../List';
+import Detail from '../Detail';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +26,7 @@ const Main: FC<Props> = memo(({ intermittence }) => {
           <Stack.Navigator headerMode="none" initialRouteName="start">
             <Stack.Screen name="start" component={Start} />
             <Stack.Screen name="list" component={List} />
+            <Stack.Screen name="detail" component={Detail} />
           </Stack.Navigator>
         </NavigationContainer>
         {

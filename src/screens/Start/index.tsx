@@ -1,4 +1,6 @@
-import React, { memo, FC, useState } from 'react';
+/* Vista de presentacion */
+/* VISTA DE PRESENTACION INICIAL */
+import React, { memo, FC } from 'react';
 import styles from './styles';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';

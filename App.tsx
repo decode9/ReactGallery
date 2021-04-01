@@ -1,3 +1,5 @@
+/* Inicio de la aplicacion */
+/* INTEGRACION DE VISTA PRINCIPAL, REDUX PERSIST, REDUX y DEBUG */
 import React from 'react';
 import Main from './src/main';
 import { store, persistor } from './src/store';
