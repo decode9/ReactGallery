@@ -1,6 +1,6 @@
 /* Vista de lista */
 /* FLATLIST INFINITO, MANEJO DE IMAGENES Y FETCH EN CASO DE LLEGAR AL FINAL */
-import React, { memo, FC } from 'react';
+import React, { memo, FC, useEffect } from 'react';
 import styles from './styles';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -13,6 +13,15 @@ import { HOST_URL } from '../../utils/path';
 
 const List: FC<Props> = memo(({ action, image, navigation }) => {
 
+  const { data, page } = image;
+  const fetch = () => {
+    action.getImages({ ...image, ...{ page: page + 1 } })
+  }
+
+  useEffect(() => {
+    if (!data.length) navigation.navigate('start')
+  }, [data])
+
   const Item = ({ item }: any) => {
     const viewDetail = () => {
       action.setImage(item)
@@ -23,12 +32,6 @@ const List: FC<Props> = memo(({ action, image, navigation }) => {
         <Image style={{ width: '100%', height: '100%' }} source={{ uri: `${HOST_URL}/id/${item.id}/${PixelRatio.getPixelSizeForLayoutSize(200)}/${PixelRatio.getPixelSizeForLayoutSize(200)}` }} />
       </TouchableOpacity>
     )
-  }
-
-  const { data, page } = image;
-
-  const fetch = () => {
-    action.getImages({ ...image, ...{ page: page + 1 } })
   }
 
   return (

@@ -1,6 +1,6 @@
 /* Vista de presentacion */
 /* VISTA DE PRESENTACION INICIAL */
-import React, { memo, FC } from 'react';
+import React, { memo, FC, useEffect, useState } from 'react';
 import styles from './styles';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -13,9 +13,19 @@ const Start: FC<Props> = memo(({ action, image, navigation }) => {
 
   const Gorilla = require('../../../assets/images/GORILLA.png')
 
+  const [enter, setEnter] = useState(false)
+
+  useEffect(() => {
+    if (image.data.length && enter) {
+      navigation.navigate('list')
+      setEnter(false)
+    }
+    return () => { }
+  }, [image.data, enter])
+
   const nextPage = () => {
     if (!image.data.length) action.getImages({ page: 1, data: image.data })
-    navigation.navigate('list');
+    setEnter(true)
   }
 
   return (
