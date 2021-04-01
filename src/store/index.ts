@@ -1,3 +1,5 @@
+/* CONFIGURACION INICIAL DE REDUX, REDUX PERSIST Y REDUX SAGA */
+/* SE UTILIZA EL ASYNCSTORAGE PARA LA PERSISTENCIA DE DATOS */
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
